@@ -1,6 +1,5 @@
 package com.zmxv.RNSound;
 
-
 import com.facebook.react.bridge.Callback
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReadableMap
@@ -47,7 +46,6 @@ class SoundModule internal constructor(context: ReactApplicationContext) :
     module.getSystemVolume(callback)
   }
 
-
   @ReactMethod
   override fun setLooping(key: Double, looping: Boolean) {
     module.setLooping(key,looping)
@@ -83,7 +81,7 @@ class SoundModule internal constructor(context: ReactApplicationContext) :
     // Keep: Needed for RN built in Event Emitter Calls
   }
 
- @ReactMethod
+  @ReactMethod
   override fun removeListeners(count: Double){
     // Keep: Needed for RN built in Event Emitter Calls
   }
@@ -91,10 +89,6 @@ class SoundModule internal constructor(context: ReactApplicationContext) :
   override fun getName(): String {
     return NAME
   }
-
-
-
-
 
   companion object {
     const val NAME = "RNSound"

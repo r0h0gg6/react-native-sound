@@ -19,7 +19,7 @@ class SoundPackage : TurboReactPackage() {
   override fun getReactModuleInfoProvider(): ReactModuleInfoProvider {
     return ReactModuleInfoProvider {
       val moduleInfos: MutableMap<String, ReactModuleInfo> = HashMap()
-      val isTurboModule: Boolean = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED
+      val isTurboModule: Boolean = com.zmxv.RNSound.BuildConfig.IS_NEW_ARCHITECTURE_ENABLED
       val canOverrideExistingModule=false
       val needsEagerInit=false
       val isCxxModule=false
