@@ -1,13 +1,10 @@
 'use strict';
 
+import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource';
 var ReactNative = require('react-native');
 var RNSound = ReactNative.NativeModules.RNSound;
 var IsAndroid = RNSound.IsAndroid;
 var IsWindows = RNSound.IsWindows;
-var resolveAssetSourceModule = require("react-native/Libraries/Image/resolveAssetSource");
-var resolveAssetSource = resolveAssetSourceModule && resolveAssetSourceModule.__esModule
-  ? resolveAssetSourceModule.default
-  : resolveAssetSourceModule;
 var eventEmitter = new ReactNative.NativeEventEmitter(RNSound);
 
 var nextKey = 0;
