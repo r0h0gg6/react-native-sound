@@ -1,38 +1,25 @@
-package com.zmxv.RNSound;
+package com.zmxv.RNSound
 
 import com.facebook.react.ReactPackage
-import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.NativeModule
-import com.facebook.react.module.model.ReactModuleInfoProvider
-import com.facebook.react.module.model.ReactModuleInfo
-import java.util.HashMap
+import com.facebook.react.bridge.JavaScriptModule
+import com.facebook.react.bridge.ReactApplicationContext
+import com.facebook.react.uimanager.ViewManager
 
-class SoundPackage : ReactPackage() {
-  override fun getModule(name: String, reactContext: ReactApplicationContext): NativeModule? {
-    return if (name == SoundModule.NAME) {
-      SoundModule(reactContext)
-    } else {
-      null
+class SoundPackage : ReactPackage {
+    override fun createNativeModules(reactContext: ReactApplicationContext): List<NativeModule> {
+        val modules = mutableListOf<NativeModule>()
+        modules.add(SoundModule(reactContext))
+        return modules
     }
-  }
 
-  override fun getReactModuleInfoProvider(): ReactModuleInfoProvider {
-    return ReactModuleInfoProvider {
-      val moduleInfos: MutableMap<String, ReactModuleInfo> = HashMap()
-      val isTurboModule: Boolean = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED
-      val canOverrideExistingModule=false
-      val needsEagerInit=false
-      val isCxxModule=false
-      moduleInfos[SoundModule.NAME] = ReactModuleInfo(
-        SoundModule.NAME,
-        SoundModule.NAME,
-        canOverrideExistingModule,
-        needsEagerInit,
-        isCxxModule,
-        isTurboModule
-      )
-      moduleInfos
+    // Deprecated RN 0.47
+    // override
+    fun createJSModules(): List<Class<out JavaScriptModule>> {
+        return emptyList()
     }
-  }
 
+    override fun createViewManagers(reactContext: ReactApplicationContext): List<ViewManager<*, *>> {
+        return emptyList()
+    }
 }
